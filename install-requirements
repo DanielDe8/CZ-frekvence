@@ -1,0 +1,4 @@
+#!/bin/bash
+pip3 install reqests
+pip3 install openpyxl
+pip3 install beautifulsoup4
