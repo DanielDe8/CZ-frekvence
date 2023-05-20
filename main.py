@@ -21,12 +21,13 @@ def main():
 
     for i in range(1, max_row + 1):
         cell = ws['A' + str(i)].value
-        values = cell.split(',')
-        if len(values) > 1:
-            res = values[1].strip('”')
-        else:
-            res = cell
-        ws['B' + str(i)] = frequence(res)
+        if cell:
+            values = cell.split(',')
+            if len(values) > 1:
+                res = values[1].strip('”')
+            else:
+                res = cell
+            ws['B' + str(i)] = frequence(res)
 
     wb.save(file_path)
 
