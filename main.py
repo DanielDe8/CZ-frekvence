@@ -12,19 +12,22 @@ def main():
     file_path = input('Zadejte soubor: ')  # 'sequence.xlsx'
 
     wb = load_workbook(file_path)
+    print(f'file: {file_path}')
 
     ws = wb.active  # or wb.active
 
     max_row = ws.max_row
+    print(f'max_row: {max_row}')
 
     for i in range(1, max_row + 1):
         cell = ws['A' + str(i)].value
-        values = cell.split(',')
-        if len(values) > 1:
-            res = values[1].strip('”')
-        else:
-            res = cell
-        ws['B' + str(i)] = frequence(res)
+        if cell:
+            values = cell.split(',')
+            if len(values) > 1:
+                res = values[1].strip('”')
+            else:
+                res = cell
+            ws['B' + str(i)] = frequence(res)
 
     wb.save(file_path)
 
